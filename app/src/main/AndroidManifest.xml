@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeepTheTime_APIPractice_20220618">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
