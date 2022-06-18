@@ -17,17 +17,5 @@ class MainActivity : AppCompatActivity() {
 //        binding 변수 대입 : setContentView를 DataBindingUtil을 통해서 실행.
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-//        모든 id 값들은 binding.해당id로 사용.
-        binding.btnToast.setOnClickListener {
-            Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.btnLog.setOnClickListener { 
-            
-            Log.d("데이터바인딩", "로그 찍기")
-            
-        }
-
     }
 }
