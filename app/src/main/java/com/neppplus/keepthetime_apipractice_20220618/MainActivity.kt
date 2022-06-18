@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 //   (activity_main) xml의 요소를 데이터바인딩을 통해 끌어오는 binding 변수 생성.
     lateinit var binding : ActivityMainBinding
