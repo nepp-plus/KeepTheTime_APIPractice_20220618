@@ -15,6 +15,12 @@
             android:layout_height="wrap_content"
             android:text="토스트 띄우기" />
 
+        <Button
+            android:id="@+id/btnLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그 찍기" />
+
 
     </LinearLayout>
 </layout>
