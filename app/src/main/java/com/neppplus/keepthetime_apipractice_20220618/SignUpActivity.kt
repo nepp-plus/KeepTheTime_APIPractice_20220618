@@ -23,6 +23,17 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnCheckEmail.setOnClickListener {
+
+//            입력한 이메일을 > 중복 확인 API에 넘겨서 > 응답 확인
+
+            val inputEmail = binding.edtEmail.text.toString()
+
+//            GET - /user/check API를 호출해서, 중복 여부 검사하자.
+
+
+        }
+
 //        회원가입 화면의 가입버튼 => API 통신으로 회원가입 요청 / 응답 처리
 
         binding.btnSignUp.setOnClickListener {
