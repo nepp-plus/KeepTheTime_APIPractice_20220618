@@ -6,20 +6,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         tools:context=".MainActivity">
 
+        <ImageView
+            android:id="@+id/imgLoginUserProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher" />
 
-        <Button
-            android:id="@+id/btnToast"
+        <TextView
+            android:id="@+id/txtLoginUserNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토스트 띄우기" />
-
-        <Button
-            android:id="@+id/btnLog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="로그 찍기" />
+            android:layout_marginTop="10dp"
+            android:text="로그인 한 사람의 닉네임" />
 
 
     </LinearLayout>
