@@ -31,6 +31,30 @@ class SignUpActivity : BaseActivity() {
 
 //            GET - /user/check API를 호출해서, 중복 여부 검사하자.
 
+            apiList.getRequestUserCheck(
+                "EMAIL",
+                inputEmail
+            ).enqueue( object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
+//                    응답이 성공 / 실패냐만 구별.
+
+                    if (response.isSuccessful) {
+                        binding.txtEmailCheckResult.text = "사용해도 좋은 이메일입니다."
+                    }
+                    else {
+                        binding.txtEmailCheckResult.text = "중복된 이메일 입니다. 다른 이메일을 사용해주세요."
+                    }
+
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+
+            })
 
         }
 
