@@ -24,6 +24,14 @@ class ContextUtil {
 
         }
 
+        fun getLoginUserToken( context: Context ) : String {
+            val pref = context.getSharedPreferences( prefName, Context.MODE_PRIVATE )
+
+//            적혀있는 토큰값 리턴 => 저장을 한번도 안했는데, 불러낸다면? 기본값을 뭘로 할건지. (예시 : "")
+            return pref.getString( LOGIN_USER_TOKEN, "" )!!
+
+        }
+
     }
 
 }
