@@ -27,5 +27,10 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
 
+//        화면에 들어오면, /user - GET으로 접근
+//        내 정보를 가져와서, 프사 / 닉네임 표시.
+
+
+
     }
 }
