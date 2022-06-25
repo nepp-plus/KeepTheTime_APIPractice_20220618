@@ -67,7 +67,7 @@ class LoginActivity : BaseActivity() {
 
 //                        기본응답의 > data 내부의 > token값을 로그로.
 
-                        Log.d("토큰?", br.data.token)
+                        Log.d("토큰?", br.data.token) // 이 토큰값을 저장을 잘 해둬야 함.
 
 //                        로그인한 사람의 닉네임을 토스트로.
 
