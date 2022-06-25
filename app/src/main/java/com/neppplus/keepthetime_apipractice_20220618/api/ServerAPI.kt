@@ -2,6 +2,7 @@ package com.neppplus.keepthetime_apipractice_20220618.api
 
 import android.util.Log
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ServerAPI {
 
@@ -23,6 +24,27 @@ class ServerAPI {
         private val BASE_URL = "https://keepthetime.xyz"
 
 //        위의 두 변수는, 이 클래스에서 세팅을 위해서만 활용. (외부 노출 X)
+
+//        retrofit 변수에 접근하게 도와주는 함수 생성 (private 변수이므로, 다른 클래스에서는 접근 불가)
+
+        fun getRetrofit() : Retrofit {
+
+//            만약, retrofit 변수가 아직 null 이라면 => 그때만 새로 생성
+//            null 이 아니라면, (if문 스킵) => 만들어져있는 retrofit 변수 활용.
+
+            if (retrofit == null) {
+
+//                레트로핏 변수를 채우자.
+
+                retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)  // 미리 변수로 담아둔 서버 주소를 활용.
+                    .addConverterFactory( GsonConverterFactory.create() ) // 서버가 주는 데이터를 쉽게 파싱.
+                    .build() // 세팅 완료.
+
+            }
+
+            return retrofit!!  // null 일 가능성이 제거된 채로 리턴.
+        }
 
     }
 
