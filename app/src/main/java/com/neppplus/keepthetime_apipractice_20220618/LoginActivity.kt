@@ -52,11 +52,16 @@ class LoginActivity : BaseActivity() {
 
                         val br = response.body()!!
 
-                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
 //                        기본응답의 > data 내부의 > token값을 로그로.
 
                         Log.d("토큰?", br.data.token)
+
+//                        로그인한 사람의 닉네임을 토스트로.
+
+                        Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+
 
                     }
 
