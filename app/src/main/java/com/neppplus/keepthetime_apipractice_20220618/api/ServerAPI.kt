@@ -17,7 +17,12 @@ class ServerAPI {
 //        하나가 만들어져 있다면, 그냥 사용 Vs. 아직 안만들어져 있다면 => 그때만 만들자.
 //        Singleton 패턴 활용
 
-        var retrofit : Retrofit? = null  // 처음에는 아직 안 만든 상태로 두자.
+        private var retrofit : Retrofit? = null  // 처음에는 아직 안 만든 상태로 두자.
+
+//        API 서버의 주소 (기초 주소)?  https://keepthetime.xyz  => 이 내부의 여러 기능 활용
+        private val BASE_URL = "https://keepthetime.xyz"
+
+//        위의 두 변수는, 이 클래스에서 세팅을 위해서만 활용. (외부 노출 X)
 
     }
 
