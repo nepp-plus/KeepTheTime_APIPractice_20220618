@@ -1,5 +1,6 @@
 package com.neppplus.keepthetime_apipractice_20220618.api
 
+import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,6 +18,6 @@ interface APIList {
     fun postRequestLogin(
         @Field("email") email: String, // FormData에 - email 이름표로 넣을 변수 받기.
         @Field("password")  pw: String, // FormData에 - password 이름표로 넣을 변수(pw) 받기.
-    ) : Call<String>  // 나중에 String 말고 다른걸로 대체. 임시로만 String.
+    ) : Call<BasicResponse>  // 파싱 구조를 잡아둔 클래스로 대응.
 
 }

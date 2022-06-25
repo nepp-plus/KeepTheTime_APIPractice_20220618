@@ -3,10 +3,12 @@ package com.neppplus.keepthetime_apipractice_20220618
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.api.APIList
 import com.neppplus.keepthetime_apipractice_20220618.api.ServerAPI
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityLoginBinding
+import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,41 +41,28 @@ class LoginActivity : BaseActivity() {
             apiList.postRequestLogin(
                 inputEmail,
                 inputPw
-            ).enqueue( object : Callback<String> {
+            ).enqueue( object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-//                    서버가 어떤 내용이던, 우리에게 응답을 주는데 성공.
-//                    로그인 성공 / 실패 등 결과를 받았다.
+                    if (response.isSuccessful) {
+//                        로그인에 최종 성공이라면 => 응답 본문이, BasicResponse 형태로 파싱되어 돌아옴.
 
-//                    최종 결과 성공 / 실패 별도로 코딩.
+                        val br = response.body()!!
 
-                    if ( response.isSuccessful ) {
-//                        로그인 까지 성공
-                        val bodyStr = response.body()!!  // 서버가 내려준 응답의 본문(body)을 String으로. (임시)
-
-                        Log.d("성공응답본문", bodyStr)
-
-                    }
-                    else {
-
-//                        아이디 / 비번 등이 틀림 : 로그인 실패
-
-                        val errorBodyStr = response.errorBody()!!.string() // 유의 : toString() 안됨.
-
-                        Log.d("실패응답본문", errorBodyStr)
+                        Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
                     }
 
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
 
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
-
-//                    아예 서버가 응답을 주지 못하는 경우. (물리적 연결 끊김 등)
-
-                }
-
-            })  // Callback : 서버에 요청을 보내고 (Call) 나서 돌아온 (back) 응답
+            })
 
         }
 
