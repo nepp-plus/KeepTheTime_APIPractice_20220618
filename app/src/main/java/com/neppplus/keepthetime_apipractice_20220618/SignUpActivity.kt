@@ -2,8 +2,13 @@ package com.neppplus.keepthetime_apipractice_20220618
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivitySignUpBinding
+import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : BaseActivity() {
 
@@ -28,7 +33,30 @@ class SignUpActivity : BaseActivity() {
             
 //            받아낸 정보들을 서버의 회원가입에 요청 전달
 
+            apiList.putRequestSignUp(
+                inputEmail,
+                inputPw,
+                inputNickname
+            ).enqueue( object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
 
+                    if (response.isSuccessful) {
+                        Toast.makeText(mContext, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(mContext, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+
+            })
 
 
         }
