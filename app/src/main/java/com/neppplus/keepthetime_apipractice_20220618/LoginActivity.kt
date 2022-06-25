@@ -97,9 +97,24 @@ class LoginActivity : BaseActivity() {
 
         }
 
+
+//        체크박스가 눌리면, 그 값을 저장
+
+        binding.autoLoginCheckBox.setOnCheckedChangeListener { compoundButton, isChecked ->
+
+//            지금 변경된 체크 여부값을, SharedPreferences에 저장
+            ContextUtil.setAutoLogin(mContext,  isChecked)
+
+        }
+
+
     }
 
     override fun setValues() {
+
+//        화면이 켜질때, 저장된 체크 여부를 반영
+
+        binding.autoLoginCheckBox.isChecked =  ContextUtil.isAutoLogin(mContext)
 
     }
 }
