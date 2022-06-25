@@ -27,7 +27,8 @@ class SignUpActivity : BaseActivity() {
             val inputNickname = binding.edtNickname.text.toString()
             
 //            받아낸 정보들을 서버의 회원가입에 요청 전달
-            
+
+
 
 
         }
