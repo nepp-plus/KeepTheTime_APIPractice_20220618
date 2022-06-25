@@ -3,8 +3,10 @@ package com.neppplus.keepthetime_apipractice_20220618
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.neppplus.keepthetime_apipractice_20220618.api.APIList
 import com.neppplus.keepthetime_apipractice_20220618.api.ServerAPI
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityLoginBinding
+import retrofit2.Retrofit
 
 class LoginActivity : BaseActivity() {
 
@@ -27,6 +29,13 @@ class LoginActivity : BaseActivity() {
             val inputPw = binding.edtPassword.text.toString()
             
 //            서버에 로그인 (keepthetime.xyz/user => POST로 접근 => 이메일, 비번 전달) 해야함
+
+//            BaseActivity가 물려주는 서버의 기능 목록 활용.
+
+            apiList.postRequestLogin(
+                inputEmail,
+                inputPw
+            )
 
         }
 
