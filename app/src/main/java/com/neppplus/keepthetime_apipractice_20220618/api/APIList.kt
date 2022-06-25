@@ -2,10 +2,7 @@ package com.neppplus.keepthetime_apipractice_20220618.api
 
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 // ServerAPI : https://keepthetime.xyz 서버로 갈 것이라고 관련 세팅.
 // APIList : 가려는 서버의 기능 목록들을 정리하는 하위 문서.
@@ -29,6 +26,14 @@ interface APIList {
         @Field("email") email: String,
         @Field("password") pw: String,
         @Field("nick_name") nick: String,
+    ) : Call<BasicResponse>
+
+//    중복검사 기능
+
+    @GET("/user/check")
+    fun getRequestUserCheck(
+        @Query("type") type: String,
+        @Query("value") value: String,
     ) : Call<BasicResponse>
 
 }
