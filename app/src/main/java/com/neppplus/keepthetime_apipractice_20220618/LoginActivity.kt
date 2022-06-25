@@ -54,6 +54,10 @@ class LoginActivity : BaseActivity() {
 
                         Toast.makeText(mContext, br.message, Toast.LENGTH_SHORT).show()
 
+//                        기본응답의 > data 내부의 > token값을 로그로.
+
+                        Log.d("토큰?", br.data.token)
+
                     }
 
                 }
