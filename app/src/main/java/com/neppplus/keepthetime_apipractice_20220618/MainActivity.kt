@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityMainBinding
+import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
 
 class MainActivity : BaseActivity() {
 
@@ -30,7 +31,8 @@ class MainActivity : BaseActivity() {
 //        화면에 들어오면, /user - GET으로 접근
 //        내 정보를 가져와서, 프사 / 닉네임 표시.
 
-
+//        로그인 한 사용자의 토큰값을 우선 로그로만.
+        Log.d("로그인토큰", ContextUtil.getLoginUserToken(mContext))
 
     }
 }

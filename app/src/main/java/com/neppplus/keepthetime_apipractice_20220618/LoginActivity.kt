@@ -10,6 +10,7 @@ import com.neppplus.keepthetime_apipractice_20220618.api.APIList
 import com.neppplus.keepthetime_apipractice_20220618.api.ServerAPI
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityLoginBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
+import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,6 +69,9 @@ class LoginActivity : BaseActivity() {
 //                        기본응답의 > data 내부의 > token값을 로그로.
 
                         Log.d("토큰?", br.data.token) // 이 토큰값을 저장을 잘 해둬야 함.
+
+//                        실제로 토큰값 저장
+                        ContextUtil.setLoginUserToken( mContext, br.data.token )
 
 //                        로그인한 사람의 닉네임을 토스트로.
 
