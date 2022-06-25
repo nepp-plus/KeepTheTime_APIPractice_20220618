@@ -1,5 +1,6 @@
 package com.neppplus.keepthetime_apipractice_20220618
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,6 +27,16 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+//        회원가입 버튼이 눌리면, 단순 화면 이동
+
+        binding.btnSignUp.setOnClickListener {
+
+            val myIntent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
+
+        }
+
 
         binding.btnLogin.setOnClickListener {
 

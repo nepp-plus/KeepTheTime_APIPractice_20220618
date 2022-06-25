@@ -18,6 +18,20 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+//        회원가입 화면의 가입버튼 => API 통신으로 회원가입 요청 / 응답 처리
+
+        binding.btnSignUp.setOnClickListener {
+
+            val inputEmail = binding.edtEmail.text.toString()
+            val inputPw = binding.edtPassword.text.toString()
+            val inputNickname = binding.edtNickname.text.toString()
+            
+//            받아낸 정보들을 서버의 회원가입에 요청 전달
+            
+
+
+        }
+
     }
 
     override fun setValues() {
