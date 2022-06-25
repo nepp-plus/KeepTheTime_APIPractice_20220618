@@ -19,6 +19,17 @@ class LoginActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnLogin.setOnClickListener {
+
+//            앱에서 입력한 Email / PW 변수에 저장
+
+            val inputEmail = binding.edtEmail.text.toString()
+            val inputPw = binding.edtPassword.text.toString()
+            
+//            서버에 로그인 (keepthetime.xyz/user => POST로 접근 => 이메일, 비번 전달) 해야함
+
+        }
+
     }
 
     override fun setValues() {
