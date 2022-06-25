@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+//    추가 라이브러리 설치 - 서버 데이터 분석용
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
