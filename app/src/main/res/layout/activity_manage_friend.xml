@@ -8,5 +8,15 @@
         android:orientation="vertical"
         tools:context=".ManageFriendActivity">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/friendManageTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/friendManageViewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 </layout>
