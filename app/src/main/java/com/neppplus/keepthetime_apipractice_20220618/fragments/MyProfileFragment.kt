@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.neppplus.keepthetime_apipractice_20220618.EditPasswordActivity
+import com.neppplus.keepthetime_apipractice_20220618.ManageFriendActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentMyProfileBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
@@ -37,6 +38,13 @@ class MyProfileFragment : BaseFragment() {
     }
 
     override fun setupEvents() {
+
+        binding.btnManageFriend.setOnClickListener {
+
+            val myIntent = Intent(mContext, ManageFriendActivity::class.java)
+            startActivity(myIntent)
+
+        }
 
         binding.btnEditPassword.setOnClickListener {
 
