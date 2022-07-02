@@ -22,6 +22,10 @@ class MyProfileFragment : Fragment() {
 
 //        향후 동작 관련 코드 작성
 
+//        1. 서버에 내 정보 요청 (GET - /user) 함수 사용 => MyProfileFragment > BaseFragment() > Fragment() 상속
+
+//        2. 서버의 응답 분석 => 프사 / 닉네임 / 이메일 반영
+
     }
 
 
