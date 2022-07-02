@@ -9,19 +9,6 @@
         android:gravity="center"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/imgLoginUserProfile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/txtLoginUserNickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="로그인 한 사람의 닉네임" />
-
 
     </LinearLayout>
 </layout>
