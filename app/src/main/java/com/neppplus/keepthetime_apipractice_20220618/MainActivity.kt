@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.neppplus.keepthetime_apipractice_20220618.adapters.MainViewPager2Adapter
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityMainBinding
@@ -53,6 +54,26 @@ class MainActivity : BaseActivity() {
 //            Boolean 값 리턴 필요 : true로 리턴
             return@setOnItemSelectedListener true
         }
+
+//        뷰 페이저로 페이지 이동 > 메뉴 선택 반영
+
+        binding.mainViewPager2.registerOnPageChangeCallback( object : ViewPager2.OnPageChangeCallback() {
+
+//            필수 구현 요소 X. 이벤트 처리 함수를 직접 오버라이딩
+
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+//                선택된 페이지(position 변수)에 따라 할 행동 => when 활용
+
+                binding.mainBottomNav.selectedItemId = when( position ) {
+                    0 -> R.id.schedule
+                    else -> R.id.myInfo
+                }
+
+            }
+
+        })
 
     }
 
