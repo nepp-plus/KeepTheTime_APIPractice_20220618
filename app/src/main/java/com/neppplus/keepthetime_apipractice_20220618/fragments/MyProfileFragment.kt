@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentMyProfileBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
@@ -54,6 +55,10 @@ class MyProfileFragment : BaseFragment() {
                     val br = response.body()!!
 
 //                    프래그먼트도 데이터바인딩 세팅을 해야, 화면의 id 붙여둔 태그들을 가져다 사용 가능.
+                    binding.txtNickname.text =  br.data.user.nickname
+                    binding.txtEmail.text = br.data.user.email
+
+                    Glide.with(mContext).load(br.data.user.profileImageURL).into( binding.imgProfile )
 
                 }
             }
