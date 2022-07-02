@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.neppplus.keepthetime_apipractice_20220618.adapters.MainViewPager2Adapter
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityMainBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
@@ -17,6 +18,8 @@ class MainActivity : BaseActivity() {
 
 //   (activity_main) xml의 요소를 데이터바인딩을 통해 끌어오는 binding 변수 생성.
     lateinit var binding : ActivityMainBinding
+
+    lateinit var mvp2a: MainViewPager2Adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mvp2a = MainViewPager2Adapter( this ) // Activity를 넣어야 함. (Context 대입 불가) => this 를 대입.
+        binding.mainViewPager2.adapter = mvp2a
+
 
     }
 }
