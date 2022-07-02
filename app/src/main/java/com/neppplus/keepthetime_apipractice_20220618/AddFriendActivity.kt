@@ -47,6 +47,15 @@ class AddFriendActivity : BaseActivity() {
 //                        서버가 주는 응답중 > users 라는 [  ] 의 내용물을 > 리스트뷰에 뿌려주기
 //                        리스트뷰의 작업이 다 되어있는 상태에서 > 서버가 준 데이터를 추가로 보여주자.
 
+                        val br = response.body()!!
+
+//                        멤버변수로 있는 목록에 => 서버가 준 데이터 목록을 전부 추가.
+                        mSearchedUserList.addAll( br.data.users )
+
+//                        리스트뷰가 먼저 만들어지고 => 나중에 목록이 추가됨.
+//                        어댑터에게 새로고침 감지
+                        mAdapter.notifyDataSetChanged()
+
                     }
                 }
 
