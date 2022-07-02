@@ -1,5 +1,6 @@
 package com.neppplus.keepthetime_apipractice_20220618.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.neppplus.keepthetime_apipractice_20220618.EditPasswordActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentMyProfileBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
@@ -35,6 +37,13 @@ class MyProfileFragment : BaseFragment() {
     }
 
     override fun setupEvents() {
+
+        binding.btnEditPassword.setOnClickListener {
+
+            val myIntent = Intent(mContext, EditPasswordActivity::class.java)
+            startActivity(myIntent)
+
+        }
 
     }
 
