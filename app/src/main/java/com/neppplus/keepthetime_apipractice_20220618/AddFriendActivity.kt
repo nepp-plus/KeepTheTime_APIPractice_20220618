@@ -3,8 +3,10 @@ package com.neppplus.keepthetime_apipractice_20220618
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.neppplus.keepthetime_apipractice_20220618.adapters.SearchedUserAdapter
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityAddFriendBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
+import com.neppplus.keepthetime_apipractice_20220618.datas.UserData
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,6 +15,11 @@ import retrofit2.Response
 class AddFriendActivity : BaseActivity() {
 
     lateinit var binding: ActivityAddFriendBinding
+
+//    서버 응답 파싱 => 이 목록에 서버가 주는 사용자 목록을 추가하자.
+    val mSearchedUserList = ArrayList<UserData>()
+
+    lateinit var mAdapter: SearchedUserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +61,10 @@ class AddFriendActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mAdapter = SearchedUserAdapter(mContext, R.layout.searched_user_list_item, mSearchedUserList)
+
+        binding.searchedUserListView.adapter = mAdapter
 
     }
 }
