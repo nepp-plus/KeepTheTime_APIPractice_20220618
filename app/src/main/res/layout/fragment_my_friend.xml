@@ -17,6 +17,7 @@
                 android:text="내 친구 목록 화면입니다." />
 
             <Button
+                android:id="@+id/btnAddFriend"
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
