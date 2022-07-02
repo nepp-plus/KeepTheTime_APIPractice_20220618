@@ -49,6 +49,9 @@ class AddFriendActivity : BaseActivity() {
 
                         val br = response.body()!!
 
+//                        기존에 검색되어있던 사용자 목록은 전부 삭제.
+                        mSearchedUserList.clear()
+
 //                        멤버변수로 있는 목록에 => 서버가 준 데이터 목록을 전부 추가.
                         mSearchedUserList.addAll( br.data.users )
 
