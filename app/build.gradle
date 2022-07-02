@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 //    추가 라이브러리 설치 - 서버 데이터 분석용
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
