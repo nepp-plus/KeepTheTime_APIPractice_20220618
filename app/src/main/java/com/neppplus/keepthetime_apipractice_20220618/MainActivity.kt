@@ -31,6 +31,28 @@ class MainActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+//        바텀 네비게이션의 메뉴 선택 > 페이지 이동
+
+        binding.mainBottomNav.setOnItemSelectedListener {
+
+//            클릭된 아이템에 따라 (it 변수가 알려줌) => 다른 행동 실행 => when 문법 활용
+
+            when (it.itemId) {
+                R.id.schedule -> {
+
+//                    0번 페이지로 ViewPager2의 페이지 이동
+                    binding.mainViewPager2.currentItem = 0
+
+                }
+                R.id.myInfo -> {
+                    binding.mainViewPager2.currentItem = 1
+                }
+            }
+
+
+//            Boolean 값 리턴 필요 : true로 리턴
+            return@setOnItemSelectedListener true
+        }
 
     }
 
