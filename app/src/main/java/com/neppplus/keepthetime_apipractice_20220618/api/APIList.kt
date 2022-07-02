@@ -51,5 +51,10 @@ interface APIList {
         @Field("new_password") newPw: String
     ) : Call<BasicResponse>
 
+    @GET("/search/user")
+    fun getRequestSearchUser(
+        @Header("X-Http-Token") token: String,
+        @Query("nickname") nick: String,
+    ) : Call<BasicResponse>
 
 }
