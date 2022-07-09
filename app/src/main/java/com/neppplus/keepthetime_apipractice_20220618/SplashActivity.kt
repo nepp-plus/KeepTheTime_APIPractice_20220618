@@ -3,6 +3,8 @@ package com.neppplus.keepthetime_apipractice_20220618
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
 
 class SplashActivity : BaseActivity() {
@@ -19,22 +21,33 @@ class SplashActivity : BaseActivity() {
 
     override fun setValues() {
 
+//        2.5초 후에 자동로그인 가능 여부 판단
+
+        val myHandler = Handler(Looper.getMainLooper())
+
+        myHandler.postDelayed( {
+
 //        자동 로그인을 할 상황인지 파악해보자
 //        해야 한다 기준 : 자동로그인 사용 체크? + 이전에 로그인 성공 했는가? (저장된 토큰 : 빈칸 아니어야함) => 둘 다 만족 : AND 조건
 //        해야한다 => 바로 메인으로 / 자동로그인 X => 로그인 화면으로
 
-        if ( ContextUtil.isAutoLogin(mContext) && ContextUtil.getLoginUserToken(mContext) != "" ) {
+            if ( ContextUtil.isAutoLogin(mContext) && ContextUtil.getLoginUserToken(mContext) != "" ) {
 
-            val myIntent = Intent(mContext, MainActivity::class.java)
-            startActivity(myIntent)
-            finish()
+                val myIntent = Intent(mContext, MainActivity::class.java)
+                startActivity(myIntent)
+                finish()
 
-        }
-        else {
-            val myIntent = Intent(mContext, LoginActivity::class.java)
-            startActivity(myIntent)
-            finish()
-        }
+            }
+            else {
+                val myIntent = Intent(mContext, LoginActivity::class.java)
+                startActivity(myIntent)
+                finish()
+            }
+
+        }, 2500 )
+
+
+
 
     }
 }
