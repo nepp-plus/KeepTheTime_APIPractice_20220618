@@ -3,6 +3,7 @@ package com.neppplus.keepthetime_apipractice_20220618
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.keepthetime_apipractice_20220618.adapters.SearchedUserRecyclerAdapter
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityAddFriendRecyclerViewBinding
@@ -80,8 +81,8 @@ class AddFriendRecyclerViewActivity : BaseActivity() {
         mAdapter = SearchedUserRecyclerAdapter( mContext, mSearchedUserList )
         binding.searchedUserRecyclerView.adapter = mAdapter
 
-//        리싸이클러뷰 : LayoutManager 설정 필요
-        binding.searchedUserRecyclerView.layoutManager = LinearLayoutManager(mContext)
+//        리싸이클러뷰 : LayoutManager 설정 필요 => Grid로 활용
+        binding.searchedUserRecyclerView.layoutManager = GridLayoutManager(mContext, 2)
 
     }
 }

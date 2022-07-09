@@ -30,7 +30,7 @@ class SearchedUserRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val row = LayoutInflater.from(mContext).inflate( R.layout.searched_user_list_item, parent, false )
+        val row = LayoutInflater.from(mContext).inflate( R.layout.searched_user_grid_list_item, parent, false )
         return MyViewHolder(row)
     }
 
