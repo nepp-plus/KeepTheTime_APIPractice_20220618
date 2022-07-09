@@ -47,6 +47,10 @@ class AddFriendRecyclerViewActivity : BaseActivity() {
 //                        검색이 성공적으로 이뤄졌다면
 //                        서버가 내려준 목록을 => ArrayList에 추가 => 리싸이클러뷰의 내용물로 반영
 
+                        val br = response.body()!!
+
+                        mSearchedUserList.addAll( br.data.users )
+
                     }
 
                 }
