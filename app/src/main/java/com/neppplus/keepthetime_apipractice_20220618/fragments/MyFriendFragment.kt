@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.AddFriendActivity
+import com.neppplus.keepthetime_apipractice_20220618.AddFriendRecyclerViewActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentMyFriendBinding
 
@@ -33,7 +34,7 @@ class MyFriendFragment : BaseFragment() {
 
         binding.btnAddFriend.setOnClickListener {
 
-            val myIntent = Intent(mContext, AddFriendActivity::class.java)
+            val myIntent = Intent(mContext, AddFriendRecyclerViewActivity::class.java)
             startActivity(myIntent)
 
         }

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeepTheTime_APIPractice_20220618">
         <activity
+            android:name=".AddFriendRecyclerViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddFriendActivity"
             android:exported="false" />
         <activity
