@@ -20,6 +20,7 @@ class EditScheduleActivity : BaseActivity() {
 
 //    선택한 약속 일자를 표시할 양식 변수
     val mDisplayDateFormat = SimpleDateFormat("M월 d일 (E)") // 6월 1일 (수) 양식
+    val mDisplayTimeFormat = SimpleDateFormat( "a h시 m분" )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +71,16 @@ class EditScheduleActivity : BaseActivity() {
 
             val tsl = object : TimePickerDialog.OnTimeSetListener {
                 override fun onTimeSet(p0: TimePicker?, hour: Int, minute: Int) {
+
+//                    1) 선택된 시간/분을 Calendar에 set - 항목 별 세팅 (시간/분 만 세팅)
+
+                    mSelectedDateTime.set(Calendar.HOUR_OF_DAY, hour)
+                    mSelectedDateTime.set( Calendar.MINUTE, minute )
+
+//                    2) txtTime의 문구에 양식을 갖춰 반영 : 오후 6시 5분
+
+                    binding.txtTime.text =  mDisplayTimeFormat.format( mSelectedDateTime.time )
+
 
                 }
             }
