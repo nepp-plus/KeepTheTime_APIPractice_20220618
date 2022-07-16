@@ -61,6 +61,16 @@ class EditScheduleActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+//        problem : 지도의 스크롤과 / 스크롤뷰의 스크롤이 동시 실행 => 지도의 스크롤이 무시됨. (상하 이동 안됨)
+//        solution : 지도위에 겹쳐둔 텍스트뷰에 손이 닿으면 (touch) -> 스크롤뷰의 기능 일시 정지 (지도만 스크롤 가능)
+
+        binding.txtScrollHelper.setOnTouchListener { view, motionEvent ->
+
+            binding.scrollView.requestDisallowInterceptTouchEvent(true)
+
+            false  // 텍스트뷰의 터치 외에도, 뒤에 가려져있는 지도의 동작도 같이 실행. (return false)
+        }
+
         binding.btnSave.setOnClickListener {
 
 //            서버에 보내줄 데이터 변수에 담아두기

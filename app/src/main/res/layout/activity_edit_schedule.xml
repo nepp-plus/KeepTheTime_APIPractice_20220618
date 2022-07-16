@@ -9,6 +9,7 @@
         tools:context=".EditScheduleActivity">
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -86,11 +87,23 @@
                     android:text="장소 선택"
                     android:layout_marginTop="10dp"/>
 
-                <com.naver.maps.map.MapView
-                    android:id="@+id/mapView"
-                    android:layout_marginTop="5dp"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+                    android:layout_height="wrap_content">
+                    <com.naver.maps.map.MapView
+                        android:id="@+id/mapView"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp" />
+
+                    <TextView
+                        android:id="@+id/txtScrollHelper"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </FrameLayout>
+
 
                 <Button
                     android:id="@+id/btnSave"
