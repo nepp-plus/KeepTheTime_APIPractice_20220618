@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -98,6 +99,10 @@ class MainActivity : BaseActivity() {
         defaultActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         defaultActionBar.setCustomView(R.layout.custom_action_bar)
 
+//        툴바를 불러내서 > 내부의 여백값을 0으로 설정
+
+        val toolbar = defaultActionBar.customView.parent as Toolbar
+        toolbar.setContentInsetsAbsolute(0, 0)
 
     }
 
