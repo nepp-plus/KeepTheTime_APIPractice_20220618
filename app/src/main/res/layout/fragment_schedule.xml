@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
-
-    <FrameLayout
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/myScheduleRecyclerView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnAddSchedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="약속 등록하기" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myScheduleRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btnAddSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="약속 등록하기" />
 
 
-    </FrameLayout>
+        </FrameLayout>
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
