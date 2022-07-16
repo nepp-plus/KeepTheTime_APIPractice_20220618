@@ -24,6 +24,7 @@
                     android:text="약속의 제목" />
 
                 <EditText
+                    android:id="@+id/edtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="제목을 입력하세요"

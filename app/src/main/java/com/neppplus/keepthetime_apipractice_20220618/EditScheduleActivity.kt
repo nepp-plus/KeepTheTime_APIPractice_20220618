@@ -28,12 +28,20 @@ class EditScheduleActivity : BaseActivity() {
     val mDisplayDateFormat = SimpleDateFormat("M월 d일 (E)") // 6월 1일 (수) 양식
     val mDisplayTimeFormat = SimpleDateFormat( "a h시 m분" )
 
+//    선택 약속일시를 => 서버에 보내기 적합한 형태로 가공할 양식 변수
+    val mServerFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
+
 
 //    xml에 배치된 맵뷰변수 끌어오기 => 네이버 요구 코드 작성 가능
     private lateinit var mapView: MapView
 
 //    맵뷰 내의 실제 지도 변수
     lateinit var naverMap : NaverMap
+
+
+//    선택한 목적지의 좌표를 저장해두자.
+    lateinit var mSelectedPosition : LatLng
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +54,27 @@ class EditScheduleActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        binding.btnSave.setOnClickListener {
+
+//            서버에 보내줄 데이터 변수에 담아두기
+
+            val inputTitle = binding.edtTitle.text.toString()  // 입력한 제목 저장
+
+//            선택 일시를 "2022-07-16 19:35" 형태로 가공해서 서버에 보내야함.
+            val datetimeStr = mServerFormat.format( mSelectedDateTime.time )
+
+            val inputPlaceName = binding.edtPlaceName.text.toString()
+
+//            네이버지도에서 마지막으로 클릭한 좌표 (LatLng) => 위도, 경도값으로 따로 추출.
+
+            val lat = mSelectedPosition.latitude
+            val lng = mSelectedPosition.longitude
+
+//            제목, 일시, 장소명, 위/경도 종합해서 서버에 전송해주자.
+
+
+        }
 
         binding.txtDate.setOnClickListener {
 
@@ -145,6 +174,10 @@ class EditScheduleActivity : BaseActivity() {
 
             marker.map = naverMap
 
+//            넵플러스 학원 위치를 선택한 것으로 설정.
+            mSelectedPosition = neppPlusLatLng
+
+
 //            정보창 달아보기
 
             val infoWindow = InfoWindow()
@@ -173,6 +206,9 @@ class EditScheduleActivity : BaseActivity() {
 //                newMarker.map = naverMap
 
                 marker.position = latLng // 기존 마커의 위치를 클릭된 좌표로 변경
+
+//                선택된 위치값도 같이 변경
+                mSelectedPosition = latLng
 
             }
 
