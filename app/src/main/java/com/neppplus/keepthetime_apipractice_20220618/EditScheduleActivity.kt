@@ -11,6 +11,7 @@ import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -135,6 +136,12 @@ class EditScheduleActivity : BaseActivity() {
 
             val marker = Marker()
             marker.position =  neppPlusLatLng
+
+            marker.icon = OverlayImage.fromResource( R.drawable.red_marker )
+
+            marker.width = 100
+            marker.height = 100
+
             marker.map = naverMap
 
 
