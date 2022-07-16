@@ -1,6 +1,9 @@
 package com.neppplus.keepthetime_apipractice_20220618.api
 
+import android.content.Context
 import android.util.Log
+import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
+import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -27,12 +30,29 @@ class ServerAPI {
 
 //        retrofit 변수에 접근하게 도와주는 함수 생성 (private 변수이므로, 다른 클래스에서는 접근 불가)
 
-        fun getRetrofit() : Retrofit {
+        fun getRetrofit(context: Context) : Retrofit {
 
 //            만약, retrofit 변수가 아직 null 이라면 => 그때만 새로 생성
 //            null 이 아니라면, (if문 스킵) => 만들어져있는 retrofit 변수 활용.
 
             if (retrofit == null) {
+
+//                서버 API 요청이 발생하게되면 => 요청을 가로채서 => 헤더를 자동으로 추가해주자.
+//                헤더 추가가 완료되면 => 원래 하려던 요청을 이어가도록  (토큰 자동 첨부)
+
+                val inteceptor = Interceptor {
+                    with(it) {
+
+//                        기존 요청에서 토큰을 덧붙인 새 요청으로 변경
+                        val newRequest =  request().newBuilder()
+                            .addHeader("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                            .build()
+
+//                        추가된 요청을 이어서 진행
+                        proceed(newRequest)
+
+                    }
+                }
 
 //                레트로핏 변수를 채우자.
 
