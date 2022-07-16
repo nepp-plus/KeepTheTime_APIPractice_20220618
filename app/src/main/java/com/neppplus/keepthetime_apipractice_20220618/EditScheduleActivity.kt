@@ -14,6 +14,11 @@ import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
+import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
+import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -72,6 +77,27 @@ class EditScheduleActivity : BaseActivity() {
             val lng = mSelectedPosition.longitude
 
 //            제목, 일시, 장소명, 위/경도 종합해서 서버에 전송해주자.
+
+            apiList.postRequestAddAppointment(
+                ContextUtil.getLoginUserToken(mContext),
+                inputTitle,
+                datetimeStr,
+                inputPlaceName,
+                lat,
+                lng
+            ).enqueue(object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
+
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+
+            })
 
 
         }
