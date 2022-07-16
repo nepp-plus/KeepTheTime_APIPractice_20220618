@@ -57,4 +57,15 @@ interface APIList {
         @Query("nickname") nick: String,
     ) : Call<BasicResponse>
 
+    @FormUrlEncoded
+    @POST("/appointment")
+    fun postRequestAddAppointment(
+        @Header("X-Http-Token") token: String,
+        @Field("title") title: String,
+        @Field("datetime") datetime: String,
+        @Field("place") place: String,
+        @Field("latitude") lat: Double,
+        @Field("longitude") lng: Double,
+    ) : Call<BasicResponse>
+
 }
