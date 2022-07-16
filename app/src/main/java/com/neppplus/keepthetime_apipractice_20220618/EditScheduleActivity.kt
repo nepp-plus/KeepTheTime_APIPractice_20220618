@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.databinding.DataBindingUtil
+import com.naver.maps.map.MapView
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,9 +23,16 @@ class EditScheduleActivity : BaseActivity() {
     val mDisplayDateFormat = SimpleDateFormat("M월 d일 (E)") // 6월 1일 (수) 양식
     val mDisplayTimeFormat = SimpleDateFormat( "a h시 m분" )
 
+
+//    xml에 배치된 맵뷰변수 끌어오기 => 네이버 요구 코드 작성 가능
+    private lateinit var mapView: MapView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_schedule)
+        
+        mapView = binding.mapView // 예제와 달리 데이터 바인딩 활용 가능
+        
         setupEvents()
         setValues()
     }
@@ -102,4 +110,44 @@ class EditScheduleActivity : BaseActivity() {
     override fun setValues() {
 
     }
+
+
+//    네이버 지도가 요구하는 함수들 작성
+
+    override fun onStart() {
+        super.onStart()
+        mapView.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+
 }
