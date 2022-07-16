@@ -168,10 +168,11 @@ class EditScheduleActivity : BaseActivity() {
 
 //                임시 : 새로 마커를 만들어서 찍어보자
 
-                val newMarker = Marker()
-                newMarker.position = latLng
-                newMarker.map = naverMap
+//                val newMarker = Marker() // 클릭 될 때 마다 새 마커 생성 X. 처음 만든 마커의 위치만 이동
+//                newMarker.position = latLng
+//                newMarker.map = naverMap
 
+                marker.position = latLng // 기존 마커의 위치를 클릭된 좌표로 변경
 
             }
 
