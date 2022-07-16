@@ -158,6 +158,31 @@ class EditScheduleActivity : BaseActivity() {
 
             infoWindow.open(marker)
 
+//            지도 영역을 클릭하면, (이벤트처리)
+            naverMap.setOnMapClickListener { pointF, latLng ->
+
+//                열려있는 정보창 닫아주기
+                infoWindow.close()
+
+            }
+
+//            마커를 클릭하면 (이벤트처리)
+
+            marker.setOnClickListener {
+
+                if (marker.hasInfoWindow()) {
+//                    이미 열려있다. => 닫아주자.
+                    infoWindow.close()
+                }
+                else {
+//                    마커에 인포윈도우 달아주기.
+                    infoWindow.open(marker)
+                }
+
+                true // return true와 동일
+            }
+
+
         }
 
     }
