@@ -28,7 +28,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 //        binding 변수 대입 : setContentView를 DataBindingUtil을 통해서 실행.
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        setCustomActionBar()
         setupEvents()
         setValues()
     }

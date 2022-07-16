@@ -29,6 +29,16 @@ abstract class BaseActivity : AppCompatActivity() {
         val myRetrofit = ServerAPI.getRetrofit()  // 서버 연결 담당 변수 불러내기
         apiList = myRetrofit.create( APIList::class.java ) // 연결된 서버의 기능 목록 세팅
 
+//        모든 화면은 만들어질때 (액션바가 있는 화면이라면) 액션바 커스텀 변경
+
+        supportActionBar?.let {
+
+//            코틀린 let : 앞의 변수가 null이 아닐때만 실행해달라.
+            setCustomActionBar()
+
+        }
+
+
     }
 
 
