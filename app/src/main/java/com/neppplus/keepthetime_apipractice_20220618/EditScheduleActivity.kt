@@ -1,9 +1,11 @@
 package com.neppplus.keepthetime_apipractice_20220618
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
 import java.text.SimpleDateFormat
@@ -58,6 +60,28 @@ class EditScheduleActivity : BaseActivity() {
                 mSelectedDateTime.get(Calendar.YEAR),
                 mSelectedDateTime.get(Calendar.MONTH),
                 mSelectedDateTime.get(Calendar.DAY_OF_MONTH)
+            ).show()
+
+        }
+
+        binding.txtTime.setOnClickListener {
+
+//            시간이 선택되면 할 일 계획
+
+            val tsl = object : TimePickerDialog.OnTimeSetListener {
+                override fun onTimeSet(p0: TimePicker?, hour: Int, minute: Int) {
+
+                }
+            }
+
+//            TimePickerDialog 띄우기
+
+            val dialog = TimePickerDialog(
+                mContext,
+                tsl,
+                mSelectedDateTime.get( Calendar.HOUR_OF_DAY ),
+                mSelectedDateTime.get( Calendar.MINUTE ),
+                false  // 시계 모양이 오전/오후를 별도 선택하도록.
             ).show()
 
         }
