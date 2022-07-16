@@ -63,4 +63,8 @@ interface APIList {
         @Field("longitude") lng: Double,
     ) : Call<BasicResponse>
 
+//    내 약속목록 조회 => 토큰을 첨부하지 않아도 자동 첨부 됨
+    @GET("/appointment")
+    fun getRequestMyAppointment() : Call<BasicResponse>
+
 }

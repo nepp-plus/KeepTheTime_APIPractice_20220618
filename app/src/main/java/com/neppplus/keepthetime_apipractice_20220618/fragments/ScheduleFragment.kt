@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment
 import com.neppplus.keepthetime_apipractice_20220618.EditScheduleActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentScheduleBinding
+import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ScheduleFragment : BaseFragment() {
 
@@ -42,6 +46,25 @@ class ScheduleFragment : BaseFragment() {
     }
 
     override fun setValues() {
+        getMySchedulesFromServer()
+    }
+
+    fun getMySchedulesFromServer() {
+
+        apiList.getRequestMyAppointment().enqueue(object : Callback<BasicResponse> {
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+                if (response.isSuccessful) {
+//                    받아온 일정 목록을 리싸이클러뷰와 연계
+                }
+
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+            }
+
+        })
 
     }
 
