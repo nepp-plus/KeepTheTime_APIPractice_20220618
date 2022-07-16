@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
 import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -40,7 +41,7 @@ class ServerAPI {
 //                서버 API 요청이 발생하게되면 => 요청을 가로채서 => 헤더를 자동으로 추가해주자.
 //                헤더 추가가 완료되면 => 원래 하려던 요청을 이어가도록  (토큰 자동 첨부)
 
-                val inteceptor = Interceptor {
+                val interceptor = Interceptor {
                     with(it) {
 
 //                        기존 요청에서 토큰을 덧붙인 새 요청으로 변경
@@ -54,10 +55,16 @@ class ServerAPI {
                     }
                 }
 
-//                레트로핏 변수를 채우자.
+//                가로채는 도구를 활용해서, 서버 통신을 하도록 세팅.
+//                서버 통신 도구 (OkHttpClient) 커스텀 제작
+
+                val myClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+
+//                (통신 도구를 인터셉터가 달린 도구로) 레트로핏 변수를 채우자.
 
                 retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)  // 미리 변수로 담아둔 서버 주소를 활용.
+                    .client(myClient) // 인터셉터를 갖고 헤더에 토큰을 자동첨부하는 클라이언트를 사용하게.
                     .addConverterFactory( GsonConverterFactory.create() ) // 서버가 주는 데이터를 쉽게 파싱.
                     .build() // 세팅 완료.
 

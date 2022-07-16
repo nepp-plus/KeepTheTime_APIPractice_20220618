@@ -19,7 +19,7 @@ abstract class BaseFragment : Fragment() {
 
         mContext = requireContext() // 프래그먼트에서도 화면을 불러낼때, mContext 만 넣으면 해결
 
-        val myRetrofit = ServerAPI.getRetrofit()
+        val myRetrofit = ServerAPI.getRetrofit(mContext)
         apiList = myRetrofit.create( APIList::class.java )
 
     }
