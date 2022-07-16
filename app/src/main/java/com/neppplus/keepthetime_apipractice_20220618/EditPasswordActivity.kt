@@ -30,7 +30,6 @@ class EditPasswordActivity : BaseActivity() {
             val inputNewPw = binding.edtNewPassword.text.toString()
 
             apiList.patchRequestEditPassword(
-                ContextUtil.getLoginUserToken(mContext),
                 inputCurrentPw,
                 inputNewPw
             ).enqueue( object : Callback<BasicResponse> {

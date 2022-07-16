@@ -40,7 +40,6 @@ class AddFriendRecyclerViewActivity : BaseActivity() {
             val inputKeyword = binding.edtNickname.text.toString()
 
             apiList.getRequestSearchUser(
-                ContextUtil.getLoginUserToken(mContext),
                 inputKeyword
             ).enqueue( object : Callback<BasicResponse> {
                 override fun onResponse(

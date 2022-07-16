@@ -35,7 +35,6 @@ class AddFriendActivity : BaseActivity() {
             val keyword = binding.edtNickname.text.toString()
 
             apiList.getRequestSearchUser(
-                ContextUtil.getLoginUserToken(mContext),
                 keyword
             ).enqueue(object : Callback<BasicResponse> {
                 override fun onResponse(

@@ -61,7 +61,7 @@ class MyProfileFragment : BaseFragment() {
 
 //        1. 서버에 내 정보 요청 (GET - /user) 함수 사용 => MyProfileFragment > BaseFragment() > Fragment() 상속
 
-        apiList.getRequestMyInfo( ContextUtil.getLoginUserToken(mContext) ).enqueue(object : Callback<BasicResponse> {
+        apiList.getRequestMyInfo().enqueue(object : Callback<BasicResponse> {
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
                 if (response.isSuccessful) {

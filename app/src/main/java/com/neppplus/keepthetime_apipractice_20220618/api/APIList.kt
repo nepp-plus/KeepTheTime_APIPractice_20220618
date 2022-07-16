@@ -39,28 +39,23 @@ interface APIList {
 //    내 정보 받아오기 (연습용)
 
     @GET("/user")
-    fun getRequestMyInfo(
-        @Header("X-Http-Token") token:String,
-    ) : Call<BasicResponse>
+    fun getRequestMyInfo() : Call<BasicResponse>
 
     @FormUrlEncoded
     @PATCH("/user/password")
     fun patchRequestEditPassword(
-        @Header("X-Http-Token") token: String,
         @Field("current_password") currentPw: String,
         @Field("new_password") newPw: String
     ) : Call<BasicResponse>
 
     @GET("/search/user")
     fun getRequestSearchUser(
-        @Header("X-Http-Token") token: String,
         @Query("nickname") nick: String,
     ) : Call<BasicResponse>
 
     @FormUrlEncoded
     @POST("/appointment")
     fun postRequestAddAppointment(
-        @Header("X-Http-Token") token: String,
         @Field("title") title: String,
         @Field("datetime") datetime: String,
         @Field("place") place: String,

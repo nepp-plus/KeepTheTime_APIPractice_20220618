@@ -90,7 +90,6 @@ class EditScheduleActivity : BaseActivity() {
 //            제목, 일시, 장소명, 위/경도 종합해서 서버에 전송해주자.
 
             apiList.postRequestAddAppointment(
-                ContextUtil.getLoginUserToken(mContext),
                 inputTitle,
                 datetimeStr,
                 inputPlaceName,
