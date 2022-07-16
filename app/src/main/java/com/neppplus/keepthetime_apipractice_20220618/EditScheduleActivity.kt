@@ -151,7 +151,7 @@ class EditScheduleActivity : BaseActivity() {
 
             infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
                 override fun getText(p0: InfoWindow): CharSequence {
-                    return "넵플러스 학원"
+                    return "목적지"
                 }
 
             }
@@ -161,8 +161,17 @@ class EditScheduleActivity : BaseActivity() {
 //            지도 영역을 클릭하면, (이벤트처리)
             naverMap.setOnMapClickListener { pointF, latLng ->
 
-//                열려있는 정보창 닫아주기
-                infoWindow.close()
+//                열려있는 정보창 닫아주기 => 폐기
+//                infoWindow.close()
+
+//                기존 마커를 클릭된 지점으로 옮겨보자.
+
+//                임시 : 새로 마커를 만들어서 찍어보자
+
+                val newMarker = Marker()
+                newMarker.position = latLng
+                newMarker.map = naverMap
+
 
             }
 
