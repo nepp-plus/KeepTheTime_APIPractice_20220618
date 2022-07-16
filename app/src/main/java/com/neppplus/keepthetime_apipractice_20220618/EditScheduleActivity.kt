@@ -10,6 +10,7 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
+import com.naver.maps.map.overlay.Marker
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -121,10 +122,20 @@ class EditScheduleActivity : BaseActivity() {
 //            it 변수가 네이버지도 객체 => 멤버변수에 담아 두고 사용하자.
             naverMap = it
 
+//            넵플러스 학원 위치를 변수로 임시 저장
+
+            val neppPlusLatLng = LatLng(  37.57791, 127.03357  )
+
 //            넵플러스 학원 위치로 지도 이동 (카메라 이동)
 
-            val cameraUpdate = CameraUpdate.scrollTo(  LatLng( 37.123, 126.9765 )  )
+            val cameraUpdate = CameraUpdate.scrollTo(  neppPlusLatLng  )
             naverMap.moveCamera( cameraUpdate )
+
+//            넵플러스 학원 위치로 마커 띄우기 (장소 표시)
+
+            val marker = Marker()
+            marker.position =  neppPlusLatLng
+            marker.map = naverMap
 
 
 
