@@ -40,6 +40,8 @@ class EditScheduleActivity : BaseActivity() {
 
 //                    1) 선택된 year, month, dayOfMonth를 Calendar에 반영 (set)
 
+                    mSelectedDateTime.set( year, month, dayOfMonth )
+
 //                    2) Calendar에 들어간값을 => 양식으로 가공해서 텍스트뷰에 반영
 
                     binding.txtDate.text = mDisplayDateFormat.format( mSelectedDateTime.time )
