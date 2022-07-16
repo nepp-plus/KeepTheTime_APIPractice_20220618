@@ -2,12 +2,14 @@ package com.neppplus.keepthetime_apipractice_20220618
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.databinding.DataBindingUtil
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,6 +28,9 @@ class EditScheduleActivity : BaseActivity() {
 
 //    xml에 배치된 맵뷰변수 끌어오기 => 네이버 요구 코드 작성 가능
     private lateinit var mapView: MapView
+
+//    맵뷰 내의 실제 지도 변수
+    lateinit var naverMap : NaverMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,6 +113,22 @@ class EditScheduleActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+//        지도 객체 얻어서 > 할일 작성
+
+        binding.mapView.getMapAsync {
+
+//            it 변수가 네이버지도 객체 => 멤버변수에 담아 두고 사용하자.
+            naverMap = it
+
+//            넵플러스 학원 위치로 지도 이동 (카메라 이동)
+
+            val cameraUpdate = CameraUpdate.scrollTo(  LatLng( 37.123, 126.9765 )  )
+            naverMap.moveCamera( cameraUpdate )
+
+
+
+        }
 
     }
 
