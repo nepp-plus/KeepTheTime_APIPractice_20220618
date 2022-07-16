@@ -10,6 +10,7 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
+import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
@@ -144,7 +145,18 @@ class EditScheduleActivity : BaseActivity() {
 
             marker.map = naverMap
 
+//            정보창 달아보기
 
+            val infoWindow = InfoWindow()
+
+            infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
+                override fun getText(p0: InfoWindow): CharSequence {
+                    return "넵플러스 학원"
+                }
+
+            }
+
+            infoWindow.open(marker)
 
         }
 
