@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 //        binding 변수 대입 : setContentView를 DataBindingUtil을 통해서 실행.
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setCustomActionBar()
         setupEvents()
         setValues()
     }
@@ -84,4 +86,20 @@ class MainActivity : BaseActivity() {
 
 
     }
+
+//    액션바를 커스텀 액션바로 바꾸는 함수
+
+    fun setCustomActionBar() {
+
+//        기존 액션바를 불러내서 => 커스텀모드로 설정 => 커스텀 뷰를 custom_action_bar xml로 설정.
+
+        val defaultActionBar = supportActionBar!!
+
+        defaultActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        defaultActionBar.setCustomView(R.layout.custom_action_bar)
+
+
+    }
+
+
 }
