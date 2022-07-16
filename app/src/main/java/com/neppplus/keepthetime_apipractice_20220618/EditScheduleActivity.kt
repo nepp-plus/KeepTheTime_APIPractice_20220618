@@ -54,7 +54,7 @@ class EditScheduleActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_schedule)
         
         mapView = binding.mapView // 예제와 달리 데이터 바인딩 활용 가능
-        
+
         setupEvents()
         setValues()
     }

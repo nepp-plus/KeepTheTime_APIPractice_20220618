@@ -88,23 +88,6 @@ class MainActivity : BaseActivity() {
 
     }
 
-//    액션바를 커스텀 액션바로 바꾸는 함수
-
-    fun setCustomActionBar() {
-
-//        기존 액션바를 불러내서 => 커스텀모드로 설정 => 커스텀 뷰를 custom_action_bar xml로 설정.
-
-        val defaultActionBar = supportActionBar!!
-
-        defaultActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        defaultActionBar.setCustomView(R.layout.custom_action_bar)
-
-//        툴바를 불러내서 > 내부의 여백값을 0으로 설정
-
-        val toolbar = defaultActionBar.customView.parent as Toolbar
-        toolbar.setContentInsetsAbsolute(0, 0)
-
-    }
 
 
 }
