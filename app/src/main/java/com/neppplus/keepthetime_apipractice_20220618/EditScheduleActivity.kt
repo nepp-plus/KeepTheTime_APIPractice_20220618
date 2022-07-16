@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import androidx.databinding.DataBindingUtil
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityEditScheduleBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EditScheduleActivity : BaseActivity() {
@@ -14,6 +15,9 @@ class EditScheduleActivity : BaseActivity() {
 
 //    선택한 약속 일시를 저장할 캘린더 변수.
     val mSelectedDateTime = Calendar.getInstance() // 현재 일시가 자동 저장
+
+//    선택한 약속 일자를 표시할 양식 변수
+    val mDisplayDateFormat = SimpleDateFormat("M월 d일 (E)") // 6월 1일 (수) 양식
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +33,17 @@ class EditScheduleActivity : BaseActivity() {
             val dateSetListener = object : DatePickerDialog.OnDateSetListener {
                 override fun onDateSet(p0: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 
-//                    임시 - txtDate에 반영
+//                    임시 - txtDate에 반영 => 실제 : Calendar / SimpleDateFormat 활용해서 반영
 
-                    binding.txtDate.text = "${month}월 ${dayOfMonth}일"
+//                    binding.txtDate.text = "${month}월 ${dayOfMonth}일"  // month값이 0~11기준으로 계산해야함
+
+
+//                    1) 선택된 year, month, dayOfMonth를 Calendar에 반영 (set)
+
+//                    2) Calendar에 들어간값을 => 양식으로 가공해서 텍스트뷰에 반영
+
+                    binding.txtDate.text = mDisplayDateFormat.format( mSelectedDateTime.time )
+
 
                 }
             }
