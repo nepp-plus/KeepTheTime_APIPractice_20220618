@@ -181,7 +181,34 @@ class LoginActivity : BaseActivity() {
                             response: Response<BasicResponse>
                         ) {
 
-//                            카카오에서 받은 로그인 정보를 > 우리서버에 전달하고 나서 할 일 작성 
+//                            카카오에서 받은 로그인 정보를 > 우리서버에 전달하고 나서 할 일 작성
+//                            일반 로그인 성공과 동일한 프로세스
+
+                            if (response.isSuccessful) {
+
+                                val br = response.body()!!
+
+//                            1. 토큰값 기기에 저장
+
+                                ContextUtil.setLoginUserToken(mContext, br.data.token)
+
+//                            2. 로그인 한 사람의 닉네임 토스트
+
+                                Toast.makeText(
+                                    mContext,
+                                    "${br.data.user.nickname}님, 환영합니다!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+//                            3. 메인화면으로 이동
+
+                                val myIntent = Intent(mContext, MainActivity::class.java)
+                                startActivity(myIntent)
+
+                                finish()
+
+                            }
+
 
                         }
 
