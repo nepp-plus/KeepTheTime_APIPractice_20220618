@@ -99,7 +99,7 @@ class ViewScheduleActivity : BaseActivity() {
                         val infoWindow = InfoWindow()
                         infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
                             override fun getText(p0: InfoWindow): CharSequence {
-                                return mAppointmentData.place
+                                return "${mAppointmentData.place}까지 ${totalTime}분 소요"
                             }
 
                         }
