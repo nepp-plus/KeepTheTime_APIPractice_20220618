@@ -1,12 +1,14 @@
 package com.neppplus.keepthetime_apipractice_20220618.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.neppplus.keepthetime_apipractice_20220618.R
+import com.neppplus.keepthetime_apipractice_20220618.ViewScheduleActivity
 import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
 
 class MyScheduleAdapter(
@@ -24,6 +26,24 @@ class MyScheduleAdapter(
             txtTitle.text =  data.title
             txtDateTime.text =  data.datetime
             txtPlaceName.text = data.place
+
+//            리싸이클러뷰의 클릭 이벤트 => 인터페이스를 활용해야 함.
+//            임시방편 : 어댑터의 row를 클릭하면 이벤트 처리.
+
+            row.setOnClickListener {
+
+//                일정목록을 자세히 보여주는 화면으로 이동
+
+                val myIntent = Intent(mContext, ViewScheduleActivity::class.java)
+
+                myIntent.putExtra("schedule", data)
+                
+//                startActivity : 액티비티 / 프래그먼트가 물려주는 기능
+//                어댑터에서는 활용 불가 : 화면단의 도움을 받아서 실행
+                mContext.startActivity( myIntent )
+
+            }
+
         }
 
     }

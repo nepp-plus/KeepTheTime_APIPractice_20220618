@@ -1,6 +1,7 @@
 package com.neppplus.keepthetime_apipractice_20220618.datas
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class AppointmentData(
     val id: Int,
@@ -22,4 +23,4 @@ data class AppointmentData(
     val user: UserData, // 기존에 만들어둔 UserData형태가 대응 가능
     @SerializedName("invited_friends")
     val invitedFriends : ArrayList<UserData>
-)
+) : Serializable
