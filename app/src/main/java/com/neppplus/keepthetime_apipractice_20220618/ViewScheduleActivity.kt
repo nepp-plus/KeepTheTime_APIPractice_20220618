@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.NaverMap
+import com.naver.maps.map.overlay.Marker
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityViewScheduleBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
 
@@ -51,6 +52,10 @@ class ViewScheduleActivity : BaseActivity() {
 
             
 //            마커를 약속 장소에 표시
+
+            val marker = Marker()
+            marker.position = latLng
+            marker.map = naverMap
             
         }
 
