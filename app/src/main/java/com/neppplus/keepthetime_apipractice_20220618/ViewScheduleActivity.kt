@@ -117,6 +117,26 @@ class ViewScheduleActivity : BaseActivity() {
 //                        출발지 추가
                         coords.add( LatLng( mAppointmentData.startLat, mAppointmentData.startLng ) )
 
+//                        중간에 들리는 정거장 목록의 좌표들을 추가 => 실제 지나가는 경로들을 표현.
+//                        ODSay API가 주는 정보 => 첫번째 추천 경로 (firstPathObj 변수)
+//                        => 세부 경로 (subPath) 들 중, 정거장 좌표들만 모아서 추출.
+
+                        val subPathArr = firstPathObj.getJSONArray("subPath")
+
+//                        세부 경로 예시 : 도보로 지하철역까지 (0) -> 지하철타고 신사역까지 (1)
+//                        -> 신사역에서 버스로 대로변 정거장(2) -> 대로변에서 목적지까지 도보로 (3)
+
+//                        for문을 이용해서, 모든 세부경로를 전부 확인해보자.
+
+                        for ( i in  0 until  subPathArr.length() ) {
+
+                            val subPathObj = subPathArr.getJSONObject(i)
+
+                            Log.d("세부경로목록", subPathObj.toString())
+
+                        }
+
+
 
 //                        도착지 추가
                         coords.add( LatLng(mAppointmentData.latitude, mAppointmentData.longitude) )
