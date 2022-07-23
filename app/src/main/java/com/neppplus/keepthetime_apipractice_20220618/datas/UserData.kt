@@ -1,6 +1,7 @@
 package com.neppplus.keepthetime_apipractice_20220618.datas
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class UserData(
     val id: Int,
@@ -17,4 +18,4 @@ data class UserData(
     val createdAt: String,  // 차후에는 실제로 날짜 양식으로 변경 예정
     @SerializedName("updated_at")
     val updateAt: String,  // 차후에는 실제로 날짜 양식으로 변경 예정
-)
+) : Serializable
