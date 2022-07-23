@@ -7,4 +7,7 @@ data class DataResponse(
     val token : String,  // "token" 이름표로 오는 "eycklva..." 문구 담는 공간.
 
     val users: ArrayList<UserData>, // "users": [ ] 를 대응하기 위한 변수 => [ ] 내부의 { }를 대응하는 클래스로 자료형 설정.
+
+    val appointments: ArrayList< AppointmentData >,
+
 )
