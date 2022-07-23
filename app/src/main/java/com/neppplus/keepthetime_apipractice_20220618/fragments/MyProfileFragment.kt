@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.neppplus.keepthetime_apipractice_20220618.EditPasswordActivity
 import com.neppplus.keepthetime_apipractice_20220618.ManageFriendActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
+import com.neppplus.keepthetime_apipractice_20220618.SplashActivity
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentMyProfileBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
@@ -38,6 +39,22 @@ class MyProfileFragment : BaseFragment() {
     }
 
     override fun setupEvents() {
+
+        binding.btnLogout.setOnClickListener {
+
+//            로그아웃 : 기기에 저장된 토큰을 삭제. => 서버에게 요청 X. 내 안에서 해결
+            ContextUtil.setLoginUserToken(mContext, "")  // 저장된 토큰이 "" 이 되도록 (로그인 안됨)
+
+//            현재 화면 종료 > Splash 액티비티로 이동 (앱 재시작)
+
+            val myIntent = Intent(mContext, SplashActivity::class.java)
+//            인텐트로 화면 시작시에, 열려있던 모든 화면 닫으면서 실행
+            myIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(myIntent)
+
+
+
+        }
 
         binding.btnManageFriend.setOnClickListener {
 
