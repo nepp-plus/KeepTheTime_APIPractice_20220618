@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.NaverMap
+import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityViewScheduleBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
@@ -56,6 +57,18 @@ class ViewScheduleActivity : BaseActivity() {
             val marker = Marker()
             marker.position = latLng
             marker.map = naverMap
+
+//            정보창을 마커에 붙이기
+
+            val infoWindow = InfoWindow()
+            infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
+                override fun getText(p0: InfoWindow): CharSequence {
+                    return mAppointmentData.place
+                }
+
+            }
+
+            infoWindow.open(marker)
             
         }
 
