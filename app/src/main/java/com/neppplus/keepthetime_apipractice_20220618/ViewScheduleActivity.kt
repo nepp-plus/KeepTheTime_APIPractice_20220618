@@ -144,6 +144,16 @@ class ViewScheduleActivity : BaseActivity() {
 
                                     Log.d("들리는정거장", stationObj.toString())
 
+//                                    해당 정거장의 위도/경도 => 경로선의 좌표목록에 추가.
+
+                                    val lat = stationObj.getString("y").toDouble()
+                                    val lng = stationObj.getString("x").toDouble()
+
+                                    val stationLatLng = LatLng( lat, lng )
+
+                                    coords.add( stationLatLng )
+
+
                                 }
 
                             }
