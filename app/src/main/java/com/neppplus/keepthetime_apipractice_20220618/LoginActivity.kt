@@ -169,6 +169,28 @@ class LoginActivity : BaseActivity() {
                     Log.d("카톡로그인", "고유번호 : ${user.id}")
                     Log.d("카톡로그인", "닉네임 : ${user.kakaoAccount!!.profile!!.nickname}")
 
+//                    우리 서버에 소셜로그인 완료 API 호출
+
+                    apiList.postRequestSocialLogin(
+                        "kakao",
+                        user.id.toString(),
+                        user.kakaoAccount!!.profile!!.nickname!!,
+                    ).enqueue(object : Callback<BasicResponse> {
+                        override fun onResponse(
+                            call: Call<BasicResponse>,
+                            response: Response<BasicResponse>
+                        ) {
+
+//                            카카오에서 받은 로그인 정보를 > 우리서버에 전달하고 나서 할 일 작성 
+
+                        }
+
+                        override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                        }
+
+                    })
+
                 }
             }
             else {
