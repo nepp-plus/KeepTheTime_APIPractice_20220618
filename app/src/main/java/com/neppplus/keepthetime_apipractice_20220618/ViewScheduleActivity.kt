@@ -2,6 +2,7 @@ package com.neppplus.keepthetime_apipractice_20220618
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraUpdate
@@ -78,6 +79,22 @@ class ViewScheduleActivity : BaseActivity() {
                     override fun onSuccess(p0: ODsayData?, p1: API?) {
 
 //                        길찾기에 성공하면 => 정보창 띄우기
+
+                        val odsayJsonData = p0!!.json
+
+                        val resultObj = odsayJsonData.getJSONObject("result")
+
+                        val pathArr = resultObj.getJSONArray("path")
+
+                        val firstPathObj = pathArr.getJSONObject(0)  // JSONArray의 { } 추출 : getJSONObject 중 몇번째
+
+                        val infoObj = firstPathObj.getJSONObject("info")
+
+                        val totalTime = infoObj.getInt("totalTime")
+
+                        Log.d("totalTime", totalTime.toString())
+
+
 
                         val infoWindow = InfoWindow()
                         infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
