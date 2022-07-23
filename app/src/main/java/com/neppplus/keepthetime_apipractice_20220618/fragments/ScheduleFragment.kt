@@ -54,7 +54,7 @@ class ScheduleFragment : BaseFragment() {
 
     override fun setValues() {
 //        먼저 서버로 데이터를 가지러 가자 => 먼 길을 가야함
-        getMySchedulesFromServer()
+//        getMySchedulesFromServer()  => onResume에서 다시 실행될 예정.
 
 //        그 후에 어댑터 세팅 => 가까이에서 해결 가능. 늦게 시작하지만, 먼저 마무리 됨.
         mAdapter = MyScheduleAdapter( mContext, mScheduleList )
@@ -75,6 +75,9 @@ class ScheduleFragment : BaseFragment() {
 
                     val br = response.body()!!
 
+//                    기존의 목록에 서버가 주는걸 추가만 하면 => 누적으로 중복 데이터 쌓임.
+                    mScheduleList.clear() // 기존에 들어있던 것들은 전부 삭제
+
 //                    상황에 따라, 어댑터 세팅이 먼저 끝나고 / 나중에 데이터가 추가되는 경우도 있다.
                     mScheduleList.addAll( br.data.appointments )
 
@@ -94,5 +97,12 @@ class ScheduleFragment : BaseFragment() {
 
     }
 
+//    이 프래그먼트가 화면에 나타날때마다, 내 약속 목록을 다시 불러서 새로고침.
+
+    override fun onResume() {
+        super.onResume()
+//        미리 분리해둔 함수를 다시 호출만 하자.
+        getMySchedulesFromServer()
+    }
 
 }
