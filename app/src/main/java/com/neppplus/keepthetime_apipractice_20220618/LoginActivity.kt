@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.kakao.sdk.user.UserApiClient
 import com.neppplus.keepthetime_apipractice_20220618.api.APIList
 import com.neppplus.keepthetime_apipractice_20220618.api.ServerAPI
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityLoginBinding
@@ -28,6 +29,33 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+//        카카오 로그인이 눌리면 => 카톡 서버에서 로그인 시도
+
+        binding.btnKakaoLogin.setOnClickListener {
+
+//            질문 - 카카오톡이 설치되어있나? 되어있다면 실제 카톡 앱으로 로그인, 아니면 임시방편으로 로그인
+
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(mContext)) {
+//                카톡 로그인 가능
+
+                UserApiClient.instance.loginWithKakaoTalk(mContext) {token, error ->
+
+                    Log.d("카톡로그인", "실제 카톡앱으로 로그인")
+                }
+
+            }
+            else {
+//                카톡 로그인 불가 -> 임시방편 활용
+                UserApiClient.instance.loginWithKakaoAccount(mContext) {token, error ->
+
+                    Log.d("카톡로그인", "임시방편으로 활용")
+
+                }
+            }
+
+
+        }
 
 //        회원가입 버튼이 눌리면, 단순 화면 이동
 
