@@ -1,11 +1,15 @@
 package com.neppplus.keepthetime_apipractice_20220618
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Base64
+import android.util.Log
 import com.neppplus.keepthetime_apipractice_20220618.utils.ContextUtil
+import java.security.MessageDigest
 
 class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +24,9 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+//        키해쉬값  로그 찍기
+        getKeyHash()
 
 //        2.5초 후에 자동로그인 가능 여부 판단
 
@@ -50,4 +57,18 @@ class SplashActivity : BaseActivity() {
 
 
     }
+
+    fun getKeyHash() {
+
+        val info = packageManager.getPackageInfo(
+            "com.neppplus.keepthetime_apipractice_20220618",
+            PackageManager.GET_SIGNATURES
+        )
+        for (signature in info.signatures) {
+            val md: MessageDigest = MessageDigest.getInstance("SHA")
+            md.update(signature.toByteArray())
+            Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+        }
+    }
+
 }
