@@ -9,6 +9,7 @@ import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.PathOverlay
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityViewScheduleBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
 import com.odsay.odsayandroidsdk.API
@@ -105,6 +106,24 @@ class ViewScheduleActivity : BaseActivity() {
                         }
 
                         infoWindow.open(marker)
+
+//                        경로선도 추가 - 임시 : 출발지 ~ 도착지 까지
+
+                        val path = PathOverlay()
+
+//                        경로선이 찍히는 지점들을 담아줄 ArrayList
+                        val coords = ArrayList<LatLng>()
+
+//                        출발지 추가
+                        coords.add( LatLng( mAppointmentData.startLat, mAppointmentData.startLng ) )
+
+
+//                        도착지 추가
+                        coords.add( LatLng(mAppointmentData.latitude, mAppointmentData.longitude) )
+
+                        path.coords  =  coords
+
+                        path.map = naverMap
 
                     }
 
