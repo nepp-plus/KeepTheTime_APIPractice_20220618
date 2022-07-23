@@ -132,7 +132,22 @@ class ViewScheduleActivity : BaseActivity() {
 
                             val subPathObj = subPathArr.getJSONObject(i)
 
-                            Log.d("세부경로목록", subPathObj.toString())
+//                            세부 경로에 => 정거장 목록이 들어있다면, 그 내부 탐색 (null인가? 그것만 아니면 OK - NOT 연산)
+                            if ( !subPathObj.isNull("passStopList") ) {
+
+                                val passStopListObj = subPathObj.getJSONObject("passStopList")
+                                val stationsArr = passStopListObj.getJSONArray("stations")
+
+                                for (j in  0 until stationsArr.length() ) {
+
+                                    val stationObj = stationsArr.getJSONObject(j)
+
+                                    Log.d("들리는정거장", stationObj.toString())
+
+                                }
+
+                            }
+
 
                         }
 
