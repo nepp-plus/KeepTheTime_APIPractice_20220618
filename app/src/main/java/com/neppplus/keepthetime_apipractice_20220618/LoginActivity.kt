@@ -42,6 +42,10 @@ class LoginActivity : BaseActivity() {
                 UserApiClient.instance.loginWithKakaoTalk(mContext) {token, error ->
 
                     Log.d("카톡로그인", "실제 카톡앱으로 로그인")
+                    if (error == null) {
+//                        에러가 없으면 내정보 카카오에서 가져오기
+                        getMyKakaoInfo()
+                    }
                 }
 
             }
@@ -50,6 +54,11 @@ class LoginActivity : BaseActivity() {
                 UserApiClient.instance.loginWithKakaoAccount(mContext) {token, error ->
 
                     Log.d("카톡로그인", "임시방편으로 활용")
+
+                    if (error == null) {
+//                        에러가 없으면 내정보 카카오에서 가져오기
+                        getMyKakaoInfo()
+                    }
 
                 }
             }
@@ -145,4 +154,30 @@ class LoginActivity : BaseActivity() {
         binding.autoLoginCheckBox.isChecked =  ContextUtil.isAutoLogin(mContext)
 
     }
+
+//    카카오톡 서버에서 내 정보 받아오는 함수
+
+    fun getMyKakaoInfo() {
+
+        UserApiClient.instance.me { user, error ->
+
+            if (error == null) {
+//                사용자 정보 활용
+                user?.let {
+
+//                    사용자 정보를 잘 받아온경우
+                    Log.d("카톡로그인", "고유번호 : ${user.id}")
+                    Log.d("카톡로그인", "닉네임 : ${user.kakaoAccount!!.profile!!.nickname}")
+
+                }
+            }
+            else {
+//                에러 발생
+                Toast.makeText(mContext, "카카오 서버에서 내 정보를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+    }
+
 }
