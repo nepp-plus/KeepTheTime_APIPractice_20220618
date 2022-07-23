@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.neppplus.keepthetime_apipractice_20220618.EditScheduleActivity
 import com.neppplus.keepthetime_apipractice_20220618.R
 import com.neppplus.keepthetime_apipractice_20220618.databinding.FragmentScheduleBinding
+import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
 import com.neppplus.keepthetime_apipractice_20220618.datas.BasicResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +19,8 @@ import retrofit2.Response
 class ScheduleFragment : BaseFragment() {
 
     lateinit var binding: FragmentScheduleBinding
+
+    val mScheduleList = ArrayList<AppointmentData>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +59,14 @@ class ScheduleFragment : BaseFragment() {
 
                 if (response.isSuccessful) {
 //                    받아온 일정 목록을 리싸이클러뷰와 연계
+
+//                    서버가 내려주는 약속 목록 전부를 => 멤버변수의 일정 목록에 추가
+
+                    val br = response.body()!!
+
+                    mScheduleList.addAll( br.data.appointments )
+
+
                 }
 
             }
