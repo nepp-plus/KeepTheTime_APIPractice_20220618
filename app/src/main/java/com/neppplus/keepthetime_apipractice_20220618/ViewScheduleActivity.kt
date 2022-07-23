@@ -10,6 +10,10 @@ import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.neppplus.keepthetime_apipractice_20220618.databinding.ActivityViewScheduleBinding
 import com.neppplus.keepthetime_apipractice_20220618.datas.AppointmentData
+import com.odsay.odsayandroidsdk.API
+import com.odsay.odsayandroidsdk.ODsayData
+import com.odsay.odsayandroidsdk.ODsayService
+import com.odsay.odsayandroidsdk.OnResultCallbackListener
 
 class ViewScheduleActivity : BaseActivity() {
 
@@ -58,17 +62,42 @@ class ViewScheduleActivity : BaseActivity() {
             marker.position = latLng
             marker.map = naverMap
 
-//            정보창을 마커에 붙이기
+//            정보창을 마커에 붙이기 => 커스텀 정보창 (장소명 + 소요시간-ODSay API/라이브러리 도움)
 
-            val infoWindow = InfoWindow()
-            infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
-                override fun getText(p0: InfoWindow): CharSequence {
-                    return mAppointmentData.place
+            val myODsay = ODsayService.init(mContext, "IlfT1SwuO6TqHZmMjP+ltXiqRNXRkFoXKrTsSxxJbpM")
+
+            myODsay.requestSearchPubTransPath(
+                mAppointmentData.startLng.toString(),
+                mAppointmentData.startLat.toString(),
+                mAppointmentData.longitude.toString(),
+                mAppointmentData.latitude.toString(),
+                null,
+                null,
+                null,
+                object : OnResultCallbackListener {
+                    override fun onSuccess(p0: ODsayData?, p1: API?) {
+
+//                        길찾기에 성공하면 => 정보창 띄우기
+
+                        val infoWindow = InfoWindow()
+                        infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(mContext) {
+                            override fun getText(p0: InfoWindow): CharSequence {
+                                return mAppointmentData.place
+                            }
+
+                        }
+
+                        infoWindow.open(marker)
+
+                    }
+
+                    override fun onError(p0: Int, p1: String?, p2: API?) {
+
+                    }
+
                 }
+            )
 
-            }
-
-            infoWindow.open(marker)
             
         }
 
