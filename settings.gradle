@@ -6,6 +6,7 @@ pluginManagement {
         maven {
             url 'https://naver.jfrog.io/artifactory/maven/'
         }
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 dependencyResolutionManagement {
@@ -16,6 +17,7 @@ dependencyResolutionManagement {
         maven {
             url 'https://naver.jfrog.io/artifactory/maven/'
         }
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 rootProject.name = "KeepTheTime_APIPractice_20220618"
